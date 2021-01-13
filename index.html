@@ -265,36 +265,44 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-3 col-md-4 col-6 px-1">
-            <iframe
-              src="https://www.youtube.com/embed/FmP4zfWffdY"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
+            <a href="https://www.youtube.com/embed/FmP4zfWffdY" class="videos">
+              <iframe
+                src="https://www.youtube.com/embed/FmP4zfWffdY"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe
+            ></a>
           </div>
           <div class="col-lg-3 col-md-4 col-6 px-1">
-            <iframe
-              src="https://www.youtube.com/embed/0nqtGBcWhSI"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
+            <a href="https://www.youtube.com/embed/0nqtGBcWhSI" class="videos">
+              <iframe
+                src="https://www.youtube.com/embed/0nqtGBcWhSI"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe
+            ></a>
           </div>
           <div class="col-lg-3 col-md-4 col-6 px-1">
-            <iframe
-              src="https://www.youtube.com/embed/jmXpX9yqjqs"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
+            <a href="https://www.youtube.com/embed/jmXpX9yqjqs" class="videos">
+              <iframe
+                src="https://www.youtube.com/embed/jmXpX9yqjqs"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </a>
           </div>
           <div class="col-lg-3 col-md-4 col-6 px-1">
-            <iframe
-              src="https://www.youtube.com/embed/RPzt1u4hCVE"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
+            <a href="https://www.youtube.com/embed/RPzt1u4hCVE" class="videos">
+              <iframe
+                src="https://www.youtube.com/embed/RPzt1u4hCVE"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe
+            ></a>
           </div>
         </div>
       </div>
@@ -321,6 +329,41 @@
           delegate: "a",
           gallery: {
             enabled: true,
+          },
+        });
+      });
+
+      $(document).ready(function () {
+        $(".videos").magnificPopup({
+          type: "iframe",
+          delegate: "a",
+          iframe: {
+            markup:
+              '<div class="mfp-iframe-scaler">' +
+              '<div class="mfp-close"></div>' +
+              '<iframe class="mfp-iframe" frameborder="0" allowfullscreen></iframe>' +
+              "</div>",
+
+            patterns: {
+              youtube: {
+                index: "youtube.com/",
+
+                id: "v=",
+
+                src: "https//www.youtube.com/embed/%id%?autoplay=1",
+              },
+              vimeo: {
+                index: "vimeo.com/",
+                id: "/",
+                src: "//player.vimeo.com/video/%id%?autoplay=1",
+              },
+              gmaps: {
+                index: "//maps.google.",
+                src: "%id%&output=embed",
+              },
+            },
+
+            srcAction: "iframe_src",
           },
         });
       });
